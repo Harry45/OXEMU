@@ -7,8 +7,8 @@ from typing import Union, Tuple
 import torch
 import torch.autograd
 import numpy as np
-import src.gp.kernel as kn
-import src.gp.transformation as tr
+import xcell.src.gp.kernel as kn
+import xcell.src.gp.transformation as tr
 
 
 class GaussianProcess(tr.PreWhiten):

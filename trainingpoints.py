@@ -28,12 +28,12 @@ def generate_prior(dictionary: dict) -> dict:
     Returns:
         dict: the prior distribution of the parameter.
     """
-    dist = getattr(scipy.stats, dictionary['distribution'])(*dictionary['specs'])
+    dist = getattr(scipy.stats, dictionary["distribution"])(*dictionary["specs"])
 
     return dist
 
 
-def scale_lhs(fname: str = 'lhs_500', save: bool = True) -> list:
+def scale_lhs(fname: str = "lhs_500", save: bool = True) -> list:
     """Scale the Latin Hypercube Samples according to the prior range.
 
     Args:
@@ -45,10 +45,10 @@ def scale_lhs(fname: str = 'lhs_500', save: bool = True) -> list:
     """
 
     # read the LHS samples
-    if '.csv' in fname:
-        path = os.path.join('data', fname)
+    if ".csv" in fname:
+        path = os.path.join("data", fname)
     else:
-        path = os.path.join('data', fname + '.csv')
+        path = os.path.join("data", fname + ".csv")
 
     lhs = pd.read_csv(path, index_col=[0])
 
@@ -69,15 +69,18 @@ def scale_lhs(fname: str = 'lhs_500', save: bool = True) -> list:
         cosmo = lhs.iloc[i, :]
 
         # scale the cosmological parameters
-        cosmo = {CONFIG.COSMO[k]: priors[CONFIG.COSMO[k]].ppf(cosmo[k]) for k in range(len(CONFIG.COSMO))}
+        cosmo = {
+            CONFIG.COSMO[k]: priors[CONFIG.COSMO[k]].ppf(cosmo[k])
+            for k in range(len(CONFIG.COSMO))
+        }
 
         # append to the list
         cosmo_list.append(cosmo)
 
     if save:
         cosmos_df = pd.DataFrame(cosmo_list)
-        hp.save_csv(cosmos_df, 'data', 'cosmologies')
-        hp.save_list(cosmo_list, 'data', 'cosmologies')
+        hp.save_csv(cosmos_df, "data", "cosmologies")
+        hp.save_list(cosmo_list, "data", "cosmologies")
 
     return cosmo_list
 
@@ -108,7 +111,7 @@ def pk_linear(fname: str, redshift: float = 0.0) -> Tuple[list, list]:
 
     # save the results to a csv file
     pk_lin_df = pd.DataFrame(pk_lin)
-    hp.save_csv(pk_lin_df, 'data', 'pk_linear')
-    hp.save_list(pk_lin, 'data', 'pk_linear')
+    hp.save_csv(pk_lin_df, "data", "pk_linear")
+    hp.save_list(pk_lin, "data", "pk_linear")
 
     return cosmologies, pk_lin

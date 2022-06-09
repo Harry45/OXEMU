@@ -14,9 +14,9 @@ import scipy.stats
 import pandas as pd
 
 # our scripts and functions
-from src.cosmology import PowerSpectrum
-import utils.helpers as hp
-import config as CONFIG
+from oxemu.src.cosmology import PowerSpectrum
+import oxemu.utils.helpers as hp
+import oxemu.config as CONFIG
 
 
 def generate_prior(dictionary: dict) -> dict:

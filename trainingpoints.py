@@ -14,9 +14,9 @@ import scipy.stats
 import pandas as pd
 
 # our scripts and functions
-from oxemu.src.cosmology import PowerSpectrum
-import oxemu.utils.helpers as hp
-import oxemu.config as CONFIG
+from src.cosmology import PowerSpectrum
+import utils.helpers as hp
+import config as CONFIG
 
 
 def generate_prior(dictionary: dict) -> dict:
@@ -45,10 +45,7 @@ def scale_lhs(fname: str = "lhs_500", save: bool = True) -> list:
     """
 
     # read the LHS samples
-    if ".csv" in fname:
-        path = os.path.join("data", fname)
-    else:
-        path = os.path.join("data", fname + ".csv")
+    path = os.path.join("data", fname + ".csv")
 
     lhs = pd.read_csv(path, index_col=[0])
 
@@ -79,8 +76,8 @@ def scale_lhs(fname: str = "lhs_500", save: bool = True) -> list:
 
     if save:
         cosmos_df = pd.DataFrame(cosmo_list)
-        hp.save_csv(cosmos_df, "data", "cosmologies")
-        hp.save_list(cosmo_list, "data", "cosmologies")
+        hp.save_csv(cosmos_df, "data", "cosmologies_" + fname)
+        hp.save_list(cosmo_list, "data", "cosmologies_" + fname)
 
     return cosmo_list
 
@@ -111,7 +108,7 @@ def pk_linear(fname: str, redshift: float = 0.0) -> Tuple[list, list]:
 
     # save the results to a csv file
     pk_lin_df = pd.DataFrame(pk_lin)
-    hp.save_csv(pk_lin_df, "data", "pk_linear")
-    hp.save_list(pk_lin, "data", "pk_linear")
+    hp.save_csv(pk_lin_df, "data", "pk_linear_" + fname)
+    hp.save_list(pk_lin, "data", "pk_linear_" + fname)
 
     return cosmologies, pk_lin

@@ -65,7 +65,7 @@ def store_arrays(array: np.ndarray, folder_name: str, file_name: str) -> None:
         os.makedirs(folder_name)
 
     # use compressed format to store data
-    np.savez_compressed(folder_name + '/' + file_name + '.npz', array)
+    np.savez_compressed(folder_name + "/" + file_name + ".npz", array)
 
 
 def load_arrays(folder_name: str, file_name: str) -> np.ndarray:
@@ -79,7 +79,7 @@ def load_arrays(folder_name: str, file_name: str) -> np.ndarray:
         np.ndarray: The array.
     """
 
-    matrix = np.load(folder_name + '/' + file_name + '.npz')['arr_0']
+    matrix = np.load(folder_name + "/" + file_name + ".npz")["arr_0"]
 
     return matrix
 
@@ -95,7 +95,7 @@ def load_csv(folder_name: str, file_name: str) -> pd.DataFrame:
         pd.DataFrame: the loaded csv file
     """
     # load the csv file
-    df = pd.read_csv(folder_name + '/' + file_name + '.csv')
+    df = pd.read_csv(folder_name + "/" + file_name + ".csv", header=None)
 
     return df
 
@@ -112,7 +112,7 @@ def save_csv(array: np.ndarray, folder_name: str, file_name: str) -> None:
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
 
-    np.savetxt(folder_name + '/' + file_name + '.csv', array, delimiter=',')
+    np.savetxt(folder_name + "/" + file_name + ".csv", array, delimiter=",")
 
 
 def save_pd_csv(df: pd.DataFrame, folder_name: str, file_name: str) -> None:
@@ -127,7 +127,7 @@ def save_pd_csv(df: pd.DataFrame, folder_name: str, file_name: str) -> None:
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
 
-    df.to_csv(folder_name + '/' + file_name + '.csv', index=False)
+    df.to_csv(folder_name + "/" + file_name + ".csv", index=False)
 
 
 def save_list(list_to_store: list, folder_name: str, file_name: str) -> None:
@@ -144,7 +144,7 @@ def save_list(list_to_store: list, folder_name: str, file_name: str) -> None:
         os.makedirs(folder_name)
 
     # use compressed format to store data
-    with open(folder_name + '/' + file_name + '.pkl', 'wb') as f:
+    with open(folder_name + "/" + file_name + ".pkl", "wb") as f:
         pickle.dump(list_to_store, f)
 
 
@@ -159,7 +159,7 @@ def load_list(folder_name: str, file_name: str) -> list:
         list: The list.
     """
 
-    with open(folder_name + '/' + file_name + '.pkl', 'rb') as f:
+    with open(folder_name + "/" + file_name + ".pkl", "rb") as f:
         list_to_read = pickle.load(f)
 
     return list_to_read
@@ -196,6 +196,6 @@ def emcee_chains(folder_name: str, file_name: str, save=True) -> np.ndarray:
 
     # save the array if required
     if save:
-        np.savetxt(folder_name + '/' + 'MCE_' + file_name, comb)
+        np.savetxt(folder_name + "/" + "MCE_" + file_name, comb)
 
     return comb

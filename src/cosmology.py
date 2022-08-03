@@ -71,11 +71,13 @@ class PowerSpectrum:
     # the range of redshifts and wavenumbers to consider
     z_min: float = field(default=0.0)
     z_max: float = field(default=5.0)
-    k_min: float = field(default=1E-4, metadata={'unit': '1/Mpc'})
-    k_max: float = field(default=1.0, metadata={'unit': '1/Mpc'})
+    k_min: float = field(default=1e-4, metadata={"unit": "1/Mpc"})
+    k_max: float = field(default=1.0, metadata={"unit": "1/Mpc"})
 
     def __post_init__(self):
-        self.wavenumber = np.geomspace(self.k_min, self.k_max, CONFIG.NWAVE, endpoint=True)
+        self.wavenumber = np.geomspace(
+            self.k_min, self.k_max, CONFIG.NWAVE, endpoint=True
+        )
 
     def pk_linear(self, cosmology: dict, redshift: float = 0.0) -> np.ndarray:
         """Calculates the linear matter power spectrum at a fixed redshift.

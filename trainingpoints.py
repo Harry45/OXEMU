@@ -102,7 +102,8 @@ def pk_linear(fname: str, redshift: float = 0.0) -> Tuple[list, list]:
 
     pk_lin = list()
 
-    for cosmo in cosmologies:
+    for i, cosmo in enumerate(cosmologies):
+        print(i, cosmo)
 
         pk_lin.append(module.pk_linear(cosmo, redshift))
 

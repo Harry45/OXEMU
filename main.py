@@ -9,4 +9,4 @@ def main(nlhs: list):
 
 
 if __name__ == "__main__":
-    main([600, 800, 900, 1000])
+    main([1000])

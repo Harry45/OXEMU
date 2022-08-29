@@ -24,17 +24,29 @@ CLASS_ARGS = {"output": "mPk", "P_k_max_1/Mpc": K_MAX, "z_max_pk": Z_MAX}
 # neutrino settings
 NEUTRINO = {"N_ncdm": 1.0, "deg_ncdm": 3.0, "T_ncdm": 0.71611, "N_ur": 0.00641}
 
-# cosmological parameters
-COSMO = ["omega_cdm", "omega_b", "ln10^{10}A_s", "n_s", "h"]
+# cosmological parameters (DES)
+COSMO = ["omega_cdm", "Omega_b", "sigma8", "n_s", "h"]
 
-# priors
+# cosmological parameters (KiDS)
+# COSMO = ["omega_cdm", "omega_b", "ln10^{10}A_s", "n_s", "h"]
+
+# priors (DES)
 PRIORS = {
-    "omega_cdm": {"distribution": "uniform", "specs": [0.06, 0.34]},
-    "omega_b": {"distribution": "uniform", "specs": [0.019, 0.007]},
-    "ln10^{10}A_s": {"distribution": "uniform", "specs": [1.70, 3.30]},
-    "n_s": {"distribution": "uniform", "specs": [0.70, 0.60]},
-    "h": {"distribution": "uniform", "specs": [0.64, 0.18]},
+    "omega_cdm": {"distribution": "uniform", "specs": [0.009, 0.72]},
+    "Omega_b": {"distribution": "uniform", "specs": [0.03, 0.04]},
+    "sigma8": {"distribution": "uniform", "specs": [0.6, 0.30]},
+    "n_s": {"distribution": "uniform", "specs": [0.87, 0.30]},
+    "h": {"distribution": "uniform", "specs": [0.55, 0.36]},
 }
+
+# priors (KiDS)
+# PRIORS = {
+#     "omega_cdm": {"distribution": "uniform", "specs": [0.06, 0.34]},
+#     "omega_b": {"distribution": "uniform", "specs": [0.019, 0.007]},
+#     "ln10^{10}A_s": {"distribution": "uniform", "specs": [1.70, 3.30]},
+#     "n_s": {"distribution": "uniform", "specs": [0.70, 0.60]},
+#     "h": {"distribution": "uniform", "specs": [0.64, 0.18]},
+# }
 
 # the Gaussian Process settings
 LEARN_RATE = 1e-2

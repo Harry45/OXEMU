@@ -10,8 +10,8 @@ from typing import Union, Tuple
 import torch
 import torch.autograd
 import numpy as np
-import src.gp.kernel as kn
-import src.gp.transformation as tr
+import gp.kernel as kn
+import gp.transformation as tr
 
 
 class GaussianProcess(tr.PreWhiten):
@@ -63,6 +63,15 @@ class GaussianProcess(tr.PreWhiten):
             self.ytrain = (ylog - self.ymean) / self.ystd
 
     def cost(self, parameters: torch.tensor) -> torch.tensor:
+<<<<<<< HEAD:gp/gaussianprocess.py
+        """Calculates the negative log-likelihood of the GP, for fitting the kernel hyperparameters.
+
+        Args:
+            parameters (torch.tensor): the set of input parameters.
+
+        Returns:
+            torch.tensor: the value of the negative log-likelihood.
+=======
         """Calculates the negative log marginal likelihood of the GP.
 
         Args:
@@ -70,6 +79,7 @@ class GaussianProcess(tr.PreWhiten):
 
         Returns:
             torch.tensor: the negative log marginal likelihood.
+>>>>>>> 06077b908b7a074c8d81eb688478702c398e24b4:src/gp/gaussianprocess.py
         """
 
         # compute the kernel matrix

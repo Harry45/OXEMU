@@ -81,7 +81,7 @@ def train_gps(nlhs: int, xtrans: bool, ytrans: bool, jitter: float = 1e-6) -> li
         opt = gp_module.optimisation(
             torch.randn(6),
             niter=CONFIG.NITER,
-            lr=CONFIG.LEARN_RATE,
+            lrate=CONFIG.LEARN_RATE,
             nrestart=CONFIG.NRESTART,
         )
 

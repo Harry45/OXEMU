@@ -10,8 +10,8 @@ from typing import Union, Tuple
 import torch
 import torch.autograd
 import numpy as np
-import gp.kernel as kn
-import gp.transformation as tr
+import src.gp.kernel as kn
+import src.gp.transformation as tr
 
 
 class GaussianProcess(tr.PreWhiten):
@@ -63,7 +63,6 @@ class GaussianProcess(tr.PreWhiten):
             self.ytrain = (ylog - self.ymean) / self.ystd
 
     def cost(self, parameters: torch.tensor) -> torch.tensor:
-<<<<<<< HEAD:gp/gaussianprocess.py
         """Calculates the negative log-likelihood of the GP, for fitting the kernel hyperparameters.
 
         Args:
@@ -71,15 +70,6 @@ class GaussianProcess(tr.PreWhiten):
 
         Returns:
             torch.tensor: the value of the negative log-likelihood.
-=======
-        """Calculates the negative log marginal likelihood of the GP.
-
-        Args:
-            parameters (torch.tensor): the kernel hyperparameters.
-
-        Returns:
-            torch.tensor: the negative log marginal likelihood.
->>>>>>> 06077b908b7a074c8d81eb688478702c398e24b4:src/gp/gaussianprocess.py
         """
 
         # compute the kernel matrix
@@ -105,10 +95,10 @@ class GaussianProcess(tr.PreWhiten):
         """Optimise for the kernel hyperparameters using Adam in PyTorch.
 
         Args:
-            parameters (torch.tensor): a tensor of the kernel hyperparameters.
-            niter (int) : the number of iterations we want to use
-            lr (float) : the learning rate
-            nrestart (int) : the number of times we want to restart the optimisation
+            parameters(torch.tensor): a tensor of the kernel hyperparameters.
+            niter(int): the number of iterations we want to use
+            lr(float): the learning rate
+            nrestart(int): the number of times we want to restart the optimisation
 
         Returns:
             dict: dictionary consisting of the optimised values of the hyperparameters and the loss.
@@ -174,7 +164,7 @@ class GaussianProcess(tr.PreWhiten):
         """Calculates the mean prediction of the GP.
 
         Args:
-            testpoint (torch.tensor): the test point.
+            testpoint(torch.tensor): the test point.
 
         Returns:
             torch.tensor: the mean prediction from the GP
@@ -197,8 +187,8 @@ class GaussianProcess(tr.PreWhiten):
         """Calculates the derivatives of the GP.
 
         Args:
-            testpoint (torch.tensor): the test point.
-            order (int, optional): the order of the differentiation. Defaults to 1.
+            testpoint(torch.tensor): the test point.
+            order(int, optional): the order of the differentiation. Defaults to 1.
 
         Raises:
             Exception: Only supports first and second derivatives.
@@ -233,8 +223,8 @@ class GaussianProcess(tr.PreWhiten):
         """Computes the prediction at a given test point.
 
         Args:
-            testpoint (torch.tensor): a tensor of the test point
-            variance (bool, optional): if we want to compute the variance as well. Defaults to False.
+            testpoint(torch.tensor): a tensor of the test point
+            variance(bool, optional): if we want to compute the variance as well. Defaults to False.
 
         Returns:
             Union[Tuple[torch.tensor, torch.tensor], torch.tensor]: The mean and variance or mean only

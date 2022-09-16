@@ -32,11 +32,11 @@ COSMO = ["omega_cdm", "Omega_b", "sigma8", "n_s", "h"]
 
 # priors (DES)
 PRIORS = {
-    "omega_cdm": {"distribution": "uniform", "specs": [0.009, 0.72]},
-    "Omega_b": {"distribution": "uniform", "specs": [0.03, 0.04]},
+    "omega_cdm": {"distribution": "uniform", "specs": [0.05, 0.45]},
+    "Omega_b": {"distribution": "uniform", "specs": [0.03, 0.015]},
     "sigma8": {"distribution": "uniform", "specs": [0.6, 0.30]},
     "n_s": {"distribution": "uniform", "specs": [0.87, 0.30]},
-    "h": {"distribution": "uniform", "specs": [0.55, 0.36]},
+    "h": {"distribution": "uniform", "specs": [0.60, 0.31]},
 }
 
 # priors (KiDS)

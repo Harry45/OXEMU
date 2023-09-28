@@ -73,7 +73,6 @@ class TransForm(object):
     """
 
     def __init__(self, xinputs: np.ndarray, yinputs: np.ndarray):
-
         # dimensionality of the problem
         self.ndim = xinputs.shape[1]
 
@@ -153,7 +152,6 @@ class JuliaPredictions(TransForm):
     ytrans: bool = field(default=True)
 
     def __post_init__(self):
-
         # number of GPs
         self.ngps = self.alphas.shape[0]
 

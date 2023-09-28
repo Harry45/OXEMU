@@ -5,6 +5,7 @@ __pycache__/
 
 # mine
 gps/700
+.ipynb_checkpoints/
 
 # C extensions
 *.so
